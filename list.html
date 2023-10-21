@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list of users</title>
+
+</head>
+<body>
+ <!--  this html file shows list of user on the data base or get  --> 
+<form >
+    <h1>list of users</h1>
+</form>
+ 
+ <input type="button" value="see lists"  onclick="lists()" >
+
+ <div id="data-list">
+
+ </div>
+
+ </form>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
+ <script>
+
+    async function lists(){
+        let response = await axios({method:'get',url: 'http://localhost:3000/list'})
+        let users=response.data;
+        let dataList=document.body.querySelector("#data-list")
+        let htmlContent=''
+        users.forEach(user => {
+            htmlContent+="<div>"+user.username+"</div>"
+        });
+
+        dataList.innerHTML=htmlContent
+    }
+ </script>
+
+</body>
+</html>
