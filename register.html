@@ -36,17 +36,24 @@
  <small>to show user list <a href="http://localhost:3000/list">clik here</a></small><br><br>
  <a href="login.html"> <strong>click if you account</strong></a><br>
      <small><a href="list.html">go to list.html to see users</a></small> <br>
+     <p id="den"></p>
  
 </form>
 <script src="axios.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"></script>
 <script> --> <script>
 async function register(){
+    
     var username=document.getElementById('username').value; 
     var email=document.getElementById('email').value;
     var password=document.getElementById('password').value;
     var country=document.getElementById('country').value;
+    if(email=='' || password==""|| password.length<5){
+        document.getElementById('den').innerHTML='hey ! empty email or password or weak password is forbidden'
+    }
    //alert(username+email+password+country); to che if it is reciving
+  else{  let response = await axios({method:'post',url: 'http://localhost:3000/regist',data:{username,email,password,country}})
+   console.log({response})}
    let response = await axios({method:'post',url: 'http://localhost:3000/regist',data:{username,email,password,country}})
    console.log({response})
 
