@@ -6,14 +6,15 @@ const conn = require('./db'); // import conn from db.js
 
 app.use(cors());
 app.use(express.json());
-const usercontrol = require('./controllers/userscontroller.js');
+const { usercontroller } = require('./controllers/userscontroller');
+const UserController = new usercontroller();
 //const reg = require('./controllers/userscontroller');
 //app.post('/regist', reg.register);
 
-app.post('/regist', usercontrol.register);
-app.get('/list', usercontrol.list);
-app.post('/login', usercontrol.login);
-app.put('/update', usercontrol.update);
+app.post('/regist', UserController.register);
+app.get('/list', UserController.list);
+app.post('/login', UserController.login);
+app.put('/update', UserController.update);
 
 
 
