@@ -1,2 +1,2 @@
- up-delet-reg-log-fetch-with-mysql  this coding part
+ up-delet-reg-log-fetch-with-mysql  
 
